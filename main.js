@@ -52,18 +52,9 @@ Image.onclick = function() {
     document.getElementById("artYear").innerHTML = artYear;
 }
 
-// When the user clicks on <span> (x), close the modal
-if (span && modal) {
-  span.onclick = function() {
-    modal.style.display = "none";
-  };
-}
+const modal = document.querySelector(".modal");
+const modalClose = document.querySelector(".modal-close");
 
-// When the user clicks anywhere outside of the modal, close it
-if (modal) {
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
-}
+modalClose.addEventListener("click", function () {
+    modal.style.display = "none";
+});
