@@ -6,43 +6,50 @@
 
 function getInfo(artId) {
     fetch(`https://api.artic.edu/api/v1/artworks/${artId}?fields=title,artist_title,medium_display,date_end`)
-        .then(response => {
-            // response.json().then(function(data) {
-            //     displayData(data);
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.log(error);
-        })
-};
+        .then(response => response.json())
+        .then(artwork => {
+        // Get the modal element
+        const modal = document.getElementById("artwork-modal");
+        
+        // Populate the modal with the artwork information
+        const title = document.getElementById("artTitle");
+        title.innerHTML = artwork.title;
+        
+        const artist = document.getElementById("artArtist");
+        artist.innerHTML = artwork.artistDisplayName;
+        
+        const medium = document.getElementById("artMedium");
+        medium.innerHTML = artwork.medium;
+        
+        const year = document.getElementById("artYear");
+        year.innerHTML = artwork.date;
+        
+        // Show the modal
+        modal.style.display = "block";
+        });
+}
+
+const images = document.querySelectorAll(".artwork-image");
+images.forEach(image => {
+  image.addEventListener("click", () => {
+    // Get the artId from the image
+    const artId = image.getAttribute("data-art-id");
+    
+    // Get the information for the artwork
+    getInfo(artId);
+  });
+});
    
-// Get the modal
+// Get the modal & the <span> element that closes the modal
 var modal = document.getElementById("myModal");
-if (!modal) {
-  console.error("Element with id 'myModal' not found.");
-}
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-if (!btn) {
-  console.error("Element with id 'myBtn' not found.");
-}
-
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-if (!span) {
-  console.error("Element with class 'close' not found.");
-}
 
-// When the user clicks on the button, open the modal and display the art information
-if (btn && modal) {
-  btn.onclick = function() {
+Image.onclick = function() {
     modal.style.display = "block";
-    document.getElementById("art-info").innerHTML = "The Mona Lisa is a 16th century oil painting created by Leonardo da Vinci.";
-  };
+    document.getElementById("artTitle").innerHTML = artTitle;
+    document.getElementById("artArtist").innerHTML = artArtist;
+    document.getElementById("artMedium").innerHTML = artMedium;
+    document.getElementById("artYear").innerHTML = artYear;
 }
 
 // When the user clicks on <span> (x), close the modal
