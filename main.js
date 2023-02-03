@@ -29,21 +29,18 @@ function getInfo(artId) {
         });
 }
 
-const images = document.querySelectorAll(".artwork-image");
-images.forEach(image => {
-  image.addEventListener("click", () => {
-    // Get the artId from the image
-    const artId = image.getAttribute("data-art-id");
-    
-    // Get the information for the artwork
-    getInfo(artId);
-  });
-});
+// Select all images and add event listeners to them.
+const images = document.querySelectorAll(".img-fluid");
+for (let i = 0; i < images.length; i++) {
+    images[i].addEventListener("click", function() {
+        showModal(i); //imgId
+    });
+}
+
    
 // Get the modal & the <span> element that closes the modal
-const img = document.getElementsByClassName("img-fluid")
 
-Image.onclick = function() {
+let showModal = function(imgId) {
     modal.style.display = "block";
     document.getElementById("artTitle").innerHTML = artTitle;
     document.getElementById("artArtist").innerHTML = artArtist;
@@ -54,6 +51,6 @@ Image.onclick = function() {
 const modal = document.querySelector(".modal");
 const modalClose = document.querySelector(".modal-close");
 
-modalClose.addEventListener("click", function () {
-    modal.style.display = "none";
-});
+// modalClose.addEventListener("click", function () {
+//     modal.style.display = "none";
+// });
