@@ -9,7 +9,7 @@ function getInfo(artId) {
         .then(response => response.json())
         .then(artwork => {
         // Get the modal element
-        const modal = document.getElementById("artwork-modal");
+        modal = document.getElementById("artwork-modal");
         
         // Populate the modal with the artwork information
         const title = document.getElementById("artTitle");
@@ -41,8 +41,7 @@ images.forEach(image => {
 });
    
 // Get the modal & the <span> element that closes the modal
-var modal = document.getElementById("myModal");
-var span = document.getElementsByClassName("close")[0];
+const img = document.getElementsByClassName("img-fluid")
 
 Image.onclick = function() {
     modal.style.display = "block";
