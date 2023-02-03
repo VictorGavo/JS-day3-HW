@@ -14,7 +14,6 @@ const artworkArray = [
     {id: 184324, image: "art7.jpg"},
     {id: 183077, image: "art8.jpg"},
 ]
-artworkArray.forEach(artwork => console.log(artwork.id))
 
 function getInfo(artId) {
     const artimage = artworkArray.find(artwork => artwork.id === Number(artId));
